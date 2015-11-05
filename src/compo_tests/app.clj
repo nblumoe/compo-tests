@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [com.stuartsierra.component :as component]))
 
-(defrecord App [config db rabbit-mq]
+(defrecord App [config database message-queue]
   component/Lifecycle
 
   (start [component]

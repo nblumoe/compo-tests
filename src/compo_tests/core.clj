@@ -5,15 +5,18 @@
             [compo-tests.rabbit-mq :as rabbit-mq]
             [com.stuartsierra.component :as component]))
 
+(defonce config
+  ;; this data could come from a simple file slurp or be imported via
+  ;; a configuration library in whatever way
+  {:datomic {:uri "foo/bar"}
+   :rabbit-mq {:queues ["queue-tweets" "queue-emails"]}})
+
 (defn system [config]
   (component/system-map
-   :db (db/new-database (:db config))
-   :rabbit-mq (rabbit-mq/new-rabbit-mq (:rabbit-mq config))
+   :database (db/new-database (:datomic config))
+   :message-queue (rabbit-mq/new-rabbit-mq (:rabbit-mq config))
    :app (component/using (app/new-app config)
-                         [:db :rabbit-mq])))
+                         [:database :message-queue])))
 
-(defn -main
-  [& args]
-  (component/start
-   (system {:db {:uri "foo/bar"}
-            :rabbit-mq nil})))
+(defn -main [& args]
+  (component/start (system config)))

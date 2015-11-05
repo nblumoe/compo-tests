@@ -5,13 +5,9 @@
 
 (def system nil)
 
-(defn config []
-  {:db {:uri "foo/bar"}
-   :rabbit-mq {:queues ["queue-tweets" "queue-emails"]}})
-
 (defn init []
   (alter-var-root #'system
-                  (constantly (compo-tests/system (config)))))
+                  (constantly (compo-tests/system compo-tests/config))))
 
 (defn start []
   (alter-var-root #'system component/start))

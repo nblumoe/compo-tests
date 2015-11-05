@@ -1,7 +1,5 @@
 (ns compo-tests.core-test
   (:require [clojure.test :refer :all]
-            [compo-tests.core :refer :all]))
+            [compo-tests.core :as compo-tests]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(use-fixtures :each compo-tests.fixtures.system/system-fixture)
