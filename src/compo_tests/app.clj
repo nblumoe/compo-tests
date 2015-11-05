@@ -12,4 +12,4 @@
     component))
 
 (defn new-app [config]
-  (map->App config))
+  (map->App {:config config}))

@@ -16,5 +16,4 @@
     component))
 
 (defn new-database [{:as config :keys [uri]}]
-  (map->Database {:uri uri})
-  )
+  (map->Database {:uri uri}))

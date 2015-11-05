@@ -5,6 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [com.stuartsierra/component "0.3.0"]
+                 [org.clojure/tools.namespace "0.2.11"]
                  [io.aviso/config "0.1.8"]
                  [com.novemberain/langohr "3.4.1"]]
   :main ^:skip-aot compo-tests.core

@@ -9,9 +9,8 @@
   (component/system-map
    :db (db/new-database (:db config))
    :rabbit-mq (rabbit-mq/new-rabbit-mq (:rabbit-mq config))
-   :app (component/using
-         (app/new-app config)
-         [:db :rabbit-mq])))
+   :app (component/using (app/new-app config)
+                         [:db :rabbit-mq])))
 
 (defn -main
   [& args]
